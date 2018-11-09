@@ -1,0 +1,14 @@
+1、我们需要定义线性表的最大存储空间
+#define MAX_SIZE 255
+2、线性表里需要有统一类型的元素集合
+typedef int ElemType;
+typede struct{
+	int id;
+	char* name;
+}ElementType;
+3、定义顺序表结构
+typedef struct
+{
+	ElementType datas[MAX_SIZE];
+	int length;
+}List;

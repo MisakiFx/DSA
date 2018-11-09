@@ -1,0 +1,57 @@
+#include <stdio.h>
+#include <stdlib.h>
+typedef struct _data//链表数据区 
+{
+	int a;
+}Data;
+typedef struct _list_node//链表节点 
+{
+	Data data;//数据区 
+	struct _list_node* next;//指针区 
+}ListNode;
+typedef struct _list//链表 
+{
+	ListNode* head;//头节点 
+	int size;//规模 
+}List;
+List list;
+void init()
+{
+	list.head = NULL;
+	list.size = 0;
+}
+void insertAsFirst()
+{
+	ListNode* t = (ListNode*)malloc(sizeof(ListNode));
+	scanf("%d",&t->data.a);
+	t->next = list.head;
+	list.head = t;
+	list.size++;
+}
+void print()
+{
+	ListNode* p = list.head;
+	while(p != NULL)
+	{
+		printf("%d\t",p->data.a);
+		p = p->next;
+	}
+}
+void clear()
+{
+	while(list.head != NULL)
+	{
+		ListNode* t = list.head;
+		list.head = t->next;
+		free(t);
+		list.size--;
+	}
+}
+int main()
+{
+	init();
+	insertAsFirst();
+	insertAsFirst();
+	print();
+	clear();
+}

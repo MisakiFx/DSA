@@ -1,0 +1,16 @@
+
+ADT 线性表 (SequenceList)
+Data
+	1、线性表数据元素是一个集合{a_1,a_2,a_3......a_n},数据元素的类型DataType(int, char, 自定义)
+	2、除了第一个元素a_1外，每个元素有且只有一个直接的前驱元素
+	3、除了最后一个元素a_n外，每个元素有且只有一个直接的后继元素
+	4、每个数据元素之间的关系是一对一的关系
+operation
+	InitList(*List)			初始化线性表：初始化一个空的线性表List
+	InsertElement(*List, index, elem)	在线性表List的index下标处插入元素elem
+	DeleteElement(*List, index, *elem)	删除表List中下标为index的元素并返回删除元素的指针elem
+	GetLength(*List)			获得长度
+	TsEmpty(*List)			是否为空
+	ClearList(*List)			清空线性表
+	GetElement(*List, indexk, *elem)	获得指定下表的元素	
+endADT
