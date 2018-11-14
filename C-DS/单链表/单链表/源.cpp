@@ -23,6 +23,13 @@ void TestLinkList()
 	linkList.length = 0;
 	InitLinkList(&linkList, dataArray, sizeof(dataArray) / sizeof(dataArray[0]));
 	PrintLinkList(&linkList);
+	printf("删除第三个元素后：\n");
+	DeleteLinkListElement(&linkList, 4);
+	PrintLinkList(&linkList);
+	printf("清空链表后打印！\n");
+	CleanLinkList(&linkList, linkList.length);
+	PrintLinkList(&linkList);
+	printf("链表长度为：%d\n", linkList.length);
 }
 int main()
 {
