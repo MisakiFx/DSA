@@ -21,9 +21,18 @@
     <ClCompile Include="LinkList.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="SequenceList.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LinkList.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DataElement.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SequenceList.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

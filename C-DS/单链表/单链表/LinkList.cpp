@@ -1,4 +1,14 @@
-﻿#include "LinkList.h"
+﻿/*!
+ * \文件名 LinkList.cpp
+ * \日期 2018/11/23 15:33
+ *
+ * \作者 Misaki
+ * 联系方式  1761607418@qq.com
+ *
+ * 文件描述: 单链表功能的具体实现
+ *
+*/
+#include "LinkList.h"
 
 void InitLinkList(LinkList* linkList, ElementType* dataArray, int length)
 {
