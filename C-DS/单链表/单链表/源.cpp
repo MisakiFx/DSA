@@ -34,6 +34,6 @@ void TestLinkList()
 }
 int main()
 {
-	TestLinkList();
+	//TestLinkList();
 	system("pause");
 }
