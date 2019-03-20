@@ -160,7 +160,8 @@ void SeqListRemoveAll(SeqList* seqlist, int v)
     if(seqlist->array[i] != v)
     {
       seqlist->array[j] = seqlist->array[i];
+      j++;
     }
   }
-  seqlist->size++;
+  seqlist->size = j;
 }
