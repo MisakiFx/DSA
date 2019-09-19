@@ -26,7 +26,19 @@ public:
     //pos前插入
     void Insert(size_t pos, const T& value)
     {
-
+        //判断pos是否合法
+        if(pos > _size || pos < 0)
+        {
+            return;
+        }
+        //扩容
+        Expend();
+        for(size_t i = _size; i > pos; i--)
+        {
+            _array[i] = _array[i - 1];
+        }
+        _array[pos] = value;
+        _size++;
     }
     //尾插
     void Push_back(const T& value)
@@ -39,11 +51,20 @@ public:
     //头插
     void Push_front(const T& value)
     {
-
+        //扩容
+        Expend();
+        //所有元素向后挪一个位置
+        for(size_t i = _size; i > 0; i--)
+        {
+            _array[i] = _array[i - 1];
+        }
+        _array[0] = value;
+        _size++;
     }
     //尾删
     void Pop_back()
     {
+        //删除前要先判断，有元素才能删
         if(_size > 0)
         {
             _size--;
@@ -52,17 +73,25 @@ public:
     //头删
     void Pop_front()
     {
-
+        //有元素才能删
+        if(_size > 0)
+        {
+            for (size_t i = 1; i < _size; i++)
+            {
+                _array[i - 1] = _array[i];
+            }
+            _size--;
+        }
     }
     //删除pos当前位置数据
-    void Erase()
+    void Erase(size_t pos)
     {
 
     }
     //查找
     size_t Find(const T& value)
     {
-
+        
     }
     //修改
     void Modify(size_t pos, const T& value)
@@ -74,8 +103,10 @@ public:
     {
         for(size_t i = 0; i < _size; i++)
         {
-            cout << _array[i] << endl;
+            cout << _array[i] << " ";
         }
+        cout << endl;
+        //cout << _size << endl;
     }
     //当前元素个数
     size_t Size()
@@ -113,7 +144,10 @@ int main()
     list.Push_back(9);
     list.Push_back(1);
     list.Push_back(2);
-    list.Pop_back();
-    list.Pop_back();
+    //list.Pop_back();
+    //list.Pop_back();
+    list.Push_front(1);
+    list.Print();
+    list.Insert(4 , 12);
     list.Print();
 }
