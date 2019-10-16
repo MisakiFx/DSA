@@ -63,11 +63,11 @@ void Sort<T>::AdjustDown(std::vector<T> &arr, int parent, int end)
         }
     }
 }
-std::vector<double> ConstructNum()
+std::vector<double> ConstructNum(int num)
 {
     srand(time(NULL));
     std::vector<double> arr;
-    for (int i = 0; i < 20; i++)
+    for (int i = 0; i < num; i++)
     {
         double num = (rand() % 10000) + ((double)(rand() % 100) / 100);
         arr.push_back(num);
@@ -86,7 +86,7 @@ void Sort<T>::QuickSort(std::vector<T> &arr, int beg, int end)
     T temp = arr[b];
     while(b < e)
     {
-        while(b < e && arr[e] > temp)
+        while(b < e && arr[e] >= temp)
         {
             e--;
         }
@@ -94,7 +94,7 @@ void Sort<T>::QuickSort(std::vector<T> &arr, int beg, int end)
         {
             arr[b] = arr[e];
         }
-        while(b < e && arr[b] < temp)
+        while(b < e && arr[b] <= temp)
         {
             b++;
         }
@@ -246,16 +246,9 @@ void Sort<T>::InsertSort(std::vector<T>& arr)
 }
 int main()
 {
-    //std::vector<int> arr = {10 ,5 , 6, 2, 1, 3, 4};
-    //Sort<int> sort;
-    //sort.BubbleSort(arr);
-    //for(auto i : arr)
-    //{
-    //    std::cout << i << " ";
-    //}
     system("chcp 65001");
     Sort<double> sort;
-    std::vector<double> arr = ConstructNum();
+    std::vector<double> arr = {1, 1, 2, 3, 9 , 8, 4, 2, 2, 10};
     std::vector<double> arr2 = arr;
     std::vector<double> arr3 = arr;
     std::vector<double> arr4 = arr;
@@ -303,15 +296,15 @@ int main()
         std::cout << i << " ";
     }
     std::cout << std::endl;
-    std::cout << "快速排序：" ;
-    sort.QuickSort(arr6, 0, arr6.size());
+    std::cout << "堆排序：" ;
+    sort.HeapSort(arr6);
     for(auto i : arr6)
     {
         std::cout << i << " ";
     }
     std::cout << std::endl;
-    std::cout << "堆排序：" ;
-    sort.HeapSort(arr7);
+    std::cout << "快速排序：" ;
+    sort.QuickSort(arr7, 0, arr.size() - 1);
     for(auto i : arr7)
     {
         std::cout << i << " ";
