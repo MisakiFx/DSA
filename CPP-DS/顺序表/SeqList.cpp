@@ -183,6 +183,10 @@ public:
             }
         }
     }
+    void RemoveAll()
+    {
+        _size = 0;
+    }
 private:
     //T _array[N];//静态顺序表，利用数组，不可变，十分不灵活
     T* _array;//动态顺序表，利用指针动态开辟
@@ -215,8 +219,7 @@ int main()
     list.Push_back(-1);
     list.Push_front(1);
     list.Print();
-    list.BubbleSort();
+    std::cout << "Remove All" << std::endl;
+    list.RemoveAll();
     list.Print();
-    int pos = list.BinaryFind(1);
-    std::cout << pos << std::endl;
 }
