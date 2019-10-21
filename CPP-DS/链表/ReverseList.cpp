@@ -30,4 +30,23 @@ public:
         }
         return head;
     }
+    //方法2，向后转法
+    ListNode* reverseList_2(ListNode* head) {
+        if(head == NULL)
+        {
+            return head;
+        }
+        ListNode* prev = head;
+        ListNode* cur = head->next;
+        ListNode* next = cur;
+        head->next = NULL;
+        while(cur != NULL)
+        {
+            next = cur->next;
+            cur->next = prev;
+            prev = cur;
+            cur = next;
+        }
+        return prev;
+    }
 };
