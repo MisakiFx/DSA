@@ -1,73 +1,63 @@
 #include <iostream>
 #include <vector>
-using namespace std;
-template<class T>
-void Merge(vector<T>& arr, size_t first, size_t mid, size_t last)
+
+//左闭右开区间
+void Merge(std::vector<int>& arr, int start, int mid, int end)
 {
-    cout << "first: " << first << ", mid: " << mid << ", last: " << last << endl;
-    int len1 = mid - first;
-    int len2 = last - mid;
-    vector<T> arr1(len1);
-    vector<T> arr2(len2);
-    for(int i = 0; i < len1; i++)
+    std::vector<int> arr1, arr2;
+    for(int i = start; i < mid; i++)
     {
-        arr1[i] = arr[first + i];
+        arr1.push_back(arr[i]);
     }
-    for(int i = 0; i < len2; i++)
+    //for(int i = mid; i < end; i++)
+    //{
+    //    arr2.push_back(arr[i]);
+    //}
+    int i = 0, j = mid, k = start;
+    while(i < arr1.size() && j < end)
     {
-        arr2[i] = arr[mid + i];
-    }
-    int i = 0, j = 0, k = first;
-    while(i < len1 && j < len2)
-    {
-        if(arr1[i] < arr2[j])
+        if(arr1[i] <= arr[j])
         {
             arr[k] = arr1[i];
             i++;
+            k++;
         }
-        else
+        else 
         {
-            arr[k] = arr2[j];
+            arr[k] = arr[j];
             j++;
+            k++;
         }
-        k++;
     }
-    while(i < len1)
+    while(i < arr1.size())
     {
         arr[k] = arr1[i];
         i++;
         k++;
     }
-    while(j < len2)
-    {
-        arr[k] = arr2[j];
-        j++;
-        k++;
-    }
+    //while(j < arr2.size())
+    //{
+    //    arr[k] = arr2[j];
+    //    j++;
+    //    k++;
+    //}
 }
-template<class T>
-void MergeSort(vector<T>& arr, size_t first, size_t last)
+void MergeSort(std::vector<int>& arr, int start, int end)
 {
-    //这里统一按照左闭右开区间进行规范
-    if((last - first) > 1)
+    if(end - start > 1)
     {
-        int mid = (first + last) / 2;
-        MergeSort(arr, first, mid);
-        MergeSort(arr, mid, last);
-        Merge(arr, first, mid, last);
-        for (int i = 0; i < arr.size(); i++)
-        {
-            cout << arr[i] << " ";
-        }
-        cout << endl;
+        int mid = (start + end) >> 1;
+        MergeSort(arr, start, mid);
+        MergeSort(arr, mid, end);
+        Merge(arr, start, mid, end);
     }
 }
 int main()
 {
-    vector<int> arr = {9, 10, 3, 4, 5, 1, 2};
+    std::vector<int> arr = {1, 2, 22, 1, 5, 4, 55, 44, 3};
     MergeSort(arr, 0, arr.size());
-    for(int i = 0; i < arr.size(); i++)
+    for(const auto& e : arr)
     {
-        cout << arr[i] << " ";
+        std::cout << e << " ";
     }
 }
